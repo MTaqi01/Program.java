@@ -1,0 +1,201 @@
+import java.util.Scanner;
+
+// Kitchen class represents a kitchen with controllable stove, lights, heater, and AC
+class Kitchen {
+    private boolean stoveOn;
+    private boolean lightsOn;
+    private boolean heaterOn;
+    private boolean acOn;
+
+    // Constructor initializes stove, lights, heater, and AC to off
+    public Kitchen() {
+        stoveOn = false;
+        lightsOn = false;
+        heaterOn = false;
+        acOn = false;
+    }
+
+    // Method to turn on the stove
+    public void turnOnStove() {
+        stoveOn = true;
+        System.out.println("Stove is now on.");
+    }
+
+    // Method to turn off the stove
+    public void turnOffStove() {
+        stoveOn = false;
+        System.out.println("Stove is now off.");
+    }
+
+    // Method to turn on the lights
+    public void turnOnLights() {
+        lightsOn = true;
+        System.out.println("Lights are now on.");
+    }
+
+    // Method to turn off the lights
+    public void turnOffLights() {
+        lightsOn = false;
+        System.out.println("Lights are now off.");
+    }
+
+    // Method to turn on the heater
+    public void turnOnHeater() {
+        heaterOn = true;
+        System.out.println("Heater is now on.");
+    }
+
+    // Method to turn off the heater
+    public void turnOffHeater() {
+        heaterOn = false;
+        System.out.println("Heater is now off.");
+    }
+
+    // Method to turn on the AC
+    public void turnOnAC() {
+        acOn = true;
+        System.out.println("AC is now on.");
+    }
+
+    // Method to turn off the AC
+    public void turnOffAC() {
+        acOn = false;
+        System.out.println("AC is now off.");
+    }
+
+    // Method to check if the stove is on
+    public boolean isStoveOn() {
+        return stoveOn;
+    }
+
+    // Method to check if the lights are on
+    public boolean areLightsOn() {
+        return lightsOn;
+    }
+
+    // Method to check if the heater is on
+    public boolean isHeaterOn() {
+        return heaterOn;
+    }
+
+    // Method to check if the AC is on
+    public boolean isACOn() {
+        return acOn;
+    }
+
+    // Method to display the current status of the kitchen
+    public void displayStatus() {
+        System.out.println("Kitchen status:");
+        System.out.println("Stove is " + (stoveOn ? "on" : "off"));
+        System.out.println("Lights are " + (lightsOn ? "on" : "off"));
+        System.out.println("Heater is " + (heaterOn ? "on" : "off"));
+        System.out.println("AC is " + (acOn ? "on" : "off"));
+    }
+
+    // Method to simulate cooking
+    public void cook() {
+        if (stoveOn) {
+            System.out.println("Cooking in progress...");
+        } else {
+            System.out.println("Turn on the stove first.");
+        }
+    }
+
+    // Method to clean the kitchen
+    public void clean() {
+        System.out.println("Cleaning the kitchen...");
+        // Simulating cleaning process
+        try {
+            Thread.sleep(2000); // Wait for 2 seconds to simulate cleaning
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.println("Kitchen is clean now.");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        Kitchen kitchen = new Kitchen();
+
+        while (true) {
+            // Display menu options
+            System.out.println("\n--- Kitchen Control Menu ---");
+            System.out.println("1. Turn on stove");
+            System.out.println("2. Turn off stove");
+            System.out.println("3. Turn on lights");
+            System.out.println("4. Turn off lights");
+            System.out.println("5. Turn on heater");
+            System.out.println("6. Turn off heater");
+            System.out.println("7. Turn on AC");
+            System.out.println("8. Turn off AC");
+            System.out.println("9. Check stove status");
+            System.out.println("10. Check lights status");
+            System.out.println("11. Check heater status");
+            System.out.println("12. Check AC status");
+            System.out.println("13. Display kitchen status");
+            System.out.println("14. Cook");
+            System.out.println("15. Clean kitchen");
+            System.out.println("16. Exit");
+            System.out.print("Enter your choice: ");
+            
+            // Read user choice
+            int choice = scanner.nextInt();
+
+            // Handle user choice
+            switch (choice) {
+                case 1:
+                    kitchen.turnOnStove();
+                    break;
+                case 2:
+                    kitchen.turnOffStove();
+                    break;
+                case 3:
+                    kitchen.turnOnLights();
+                    break;
+                case 4:
+                    kitchen.turnOffLights();
+                    break;
+                case 5:
+                    kitchen.turnOnHeater();
+                    break;
+                case 6:
+                    kitchen.turnOffHeater();
+                    break;
+                case 7:
+                    kitchen.turnOnAC();
+                    break;
+                case 8:
+                    kitchen.turnOffAC();
+                    break;
+                case 9:
+                    System.out.println("Stove is " + (kitchen.isStoveOn() ? "on" : "off"));
+                    break;
+                case 10:
+                    System.out.println("Lights are " + (kitchen.areLightsOn() ? "on" : "off"));
+                    break;
+                case 11:
+                    System.out.println("Heater is " + (kitchen.isHeaterOn() ? "on" : "off"));
+                    break;
+                case 12:
+                    System.out.println("AC is " + (kitchen.isACOn() ? "on" : "off"));
+                    break;
+                case 13:
+                    kitchen.displayStatus();
+                    break;
+                case 14:
+                    kitchen.cook();
+                    break;
+                case 15:
+                    kitchen.clean();
+                    break;
+                case 16:
+                    System.out.println("Exiting program. Goodbye!");
+                    System.exit(0);
+                default:
+                    System.out.println("Invalid choice. Please enter a number from 1 to 16.");
+            }
+        }
+    }
+}
